@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- displays site properly based on user's device -->
+
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+
+	<title>Frontend Mentor | Multi-step form</title>
+
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+	<header></header>
+	<main class="container">
+		<section class="card">
+			<aside>
+				<ul class="nav-list">
+					<li class="nav-item active">
+						<span class="level-item-number">1</span>
+						<div class="text-label-item">
+							<p class="step-item">Step 1</p>
+							<h4 class="step-item-title">Your info</h4>
+						</div>
+					</li>
+					<li class="nav-item">
+						<span class="level-item-number">2</span>
+						<div class="text-label-item">
+							<p class="step-item">Step 2</p>
+							<h4 class="step-item-title">Select plan</h4>
+						</div>
+					</li>
+					<li class="nav-item">
+						<span class="level-item-number">3</span>
+						<div class="text-label-item">
+							<p class="step-item">Step 3</p>
+							<h4 class="step-item-title">Add-ons</h4>
+						</div>
+					</li>
+					<li class="nav-item">
+						<span class="level-item-number">4</span>
+						<div class="text-label-item">
+							<p class="step-item">Step 4</p>
+							<h4 class="step-item-title">Summary</h4>
+						</div>
+					</li>
+				</ul>
+			</aside>
+			<div class="form-container">
+				<form action="">
+					<div class="steps step-1 active">
+						<div class="step-header">
+							<h1 class="step-title">Personal info</h1>
+						</div>
+						<div class="step-body">
+							<p class="step-text">
+								Please provide your name, email address, and phone number.
+							</p>
+							<div class="step-content">
+								<div class="input-group">
+									<div class="group-label-text">
+										<label for="name" class="label-text">Name</label><span
+											class="error-message">this is required</span>
+									</div>
+									<input type="text" class="input-control" placeholder="e.g. Stephen King" name="name"
+										id="name" required autocomplete="name" />
+								</div>
+								<div class="input-group">
+									<div class="group-label-text">
+										<label for="email" class="label-text">Email Address</label><span
+											class="error-message">this is not a email</span>
+									</div>
+									<input type="email" class="input-control" placeholder="e.g. stephenking@lorem.com"
+										name="email" id="email" required autocomplete="email" />
+								</div>
+								<div class="input-group">
+									<div class="group-label-text">
+										<label for="phone" class="label-text">Phone Number</label><span
+											class="error-message"></span>
+									</div>
+									<input type="tel" class="input-control" placeholder="e.g. +1 234 567 890"
+										name="phone" id="phone" required autocomplete="tel" />
+								</div>
+							</div>
+						</div>
+						<div class="step-footer">
+							<button class="btn btn-next" onclick="nextStep(event,this)">
+								Next Step
+							</button>
+						</div>
+					</div>
+					<div class="steps step-2">
+						<div class="step-header">
+							<h1 class="step-title">Select your plan</h1>
+						</div>
+						<div class="step-body">
+							<p class="step-text">
+								You have the option of monthly or yearly billing.
+							</p>
+							<div class="step-content">
+								<span class="error-message">please select a plan</span>
+								<div class="group-plans">
+									<input type="radio" class="input-plan" name="input-plan" id="plan-arcade" required
+										value="arcade" />
+									<label class="label-plan" for="plan-arcade">
+										<img src="assets/images/icon-arcade.svg" width="50" alt="icon-arcade" />
+										<div class="content-plan">
+											<h4 class="title-plan">Arcade</h4>
+											<p class="price-plan">
+												<span class="prefix">$</span>
+												<span class="price-number">9</span>
+												<span class="price-unit">/mo</span>
+											</p>
+											<p class="free-months hidden">2 months free</p>
+										</div>
+									</label>
+									<input type="radio" class="input-plan" name="input-plan" id="plan-advanced" required
+										value="advanced" />
+									<label class="label-plan" for="plan-advanced">
+										<img src="assets/images/icon-advanced.svg" width="50" alt="icon-advanced" />
+										<div class="content-plan">
+											<h4 class="title-plan">Advanced</h4>
+											<p class="price-plan">
+												<span class="prefix">$</span>
+												<span class="price-number">12</span>
+												<span class="price-unit">/mo</span>
+											</p>
+											<p class="free-months hidden">2 months free</p>
+										</div>
+									</label>
+									<input type="radio" class="input-plan" name="input-plan" id="plan-pro" required
+										value="pro" />
+									<label class="label-plan" for="plan-pro">
+										<img src="assets/images/icon-pro.svg" width="50" alt="icon-pro" />
+										<div class="content-plan">
+											<h4 class="title-plan">Pro</h4>
+											<p class="price-plan">
+												<span class="prefix">$</span>
+												<span class="price-number">15</span>
+												<span class="price-unit">/mo</span>
+											</p>
+											<p class="free-months hidden">2 months free</p>
+										</div>
+									</label>
+								</div>
+								<div class="frequency">
+									<input type="checkbox" class="input-frequency" name="input-frequency"
+										id="input-frequency" />
+									<span class="freq-monthly">Monthly</span><label class="toggle-frequency"
+										for="input-frequency"></label><span class="freq-yearly">Yearly</span>
+								</div>
+							</div>
+						</div>
+						<div class="step-footer">
+							<button class="btn btn-back" onclick="backStep(event,this)">
+								Go Back</button><button class="btn btn-next" onclick="nextStep(event,this)">
+								Next Step
+							</button>
+						</div>
+					</div>
+					<div class="steps step-3">
+						<div class="step-header">
+							<h1 class="step-title">Pick add-ons</h1>
+						</div>
+						<div class="step-body">
+							<p class="step-text">
+								Add-ons help enhance your gaming experience.
+							</p>
+							<div class="step-content">
+								<span class="error-message"></span>
+								<div class="input-group">
+									<input type="checkbox" name="addons-online" id="addons-online" class="input-addons"
+										value="online" />
+									<label for="addons-online" class="label-addons">
+										<div class="check-container">
+											<span class="checker"></span>
+										</div>
+										<div class="addons-container">
+											<h4 class="addons-title">Online service</h4>
+											<p class="addons-content">
+												Access to multiplayer games
+											</p>
+										</div>
+										<div class="addons-price">
+											<span class="prefix">+$</span><span class="price-number">1</span><span
+												class="price-unit">/mo</span>
+										</div>
+									</label>
+								</div>
+								<div class="input-group">
+									<input type="checkbox" name="addons-storage" id="addons-storage"
+										class="input-addons" value="storage" />
+									<label for="addons-storage" class="label-addons">
+										<div class="check-container">
+											<span class="checker"></span>
+										</div>
+										<div class="addons-container">
+											<h4 class="addons-title">Larger storage</h4>
+											<p class="addons-content">Extra 1TB of cloud save</p>
+										</div>
+										<div class="addons-price">
+											<span class="prefix">+$</span><span class="price-number">2</span><span
+												class="price-unit">/mo</span>
+										</div>
+									</label>
+								</div>
+								<div class="input-group">
+									<input type="checkbox" name="addons-customizable" id="addons-customizable"
+										class="input-addons" value="customize" />
+									<label for="addons-customizable" class="label-addons">
+										<div class="check-container">
+											<span class="checker"></span>
+										</div>
+										<div class="addons-container">
+											<h4 class="addons-title">Customizable Profile</h4>
+											<p class="addons-content">
+												Custom theme on your profile
+											</p>
+										</div>
+										<div class="addons-price">
+											<span class="prefix">+$</span><span class="price-number">2</span><span
+												class="price-unit">/mo</span>
+										</div>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="step-footer">
+							<button class="btn btn-back" onclick="backStep(event,this)">
+								Go Back</button><button class="btn btn-next" onclick="nextStep(event,this)">
+								Next Step
+							</button>
+						</div>
+					</div>
+					<div class="steps step-4">
+						<div class="step-header">
+							<h1 class="step-title">Finishing up</h1>
+						</div>
+						<div class="step-body">
+							<p class="step-text">
+								Double-check everything looks OK before confirming.
+							</p>
+							<div class="step-content">
+								<div class="card-summary">
+									<div class="summary-plan">
+										<div class="summary-plan-text">
+											<h3 class="summary-title">
+												<span class="plan-choice">Arcade</span> (<span
+													class="summary-frequency">Monthly</span>)
+											</h3>
+											<p onclick="goToStep(2)">Change</p>
+										</div>
+										<div class="summary-price">
+											<span class="prefix">$</span><span
+												class="price-number price-plan-choice">9</span><span
+												class="price-unit">/mo</span>
+										</div>
+									</div>
+									<div class="summary-addons">
+										<ul class="list-summary-addons">
+											<li class="summary-addons-item">
+												<p class="text">Online service</p>
+												<div class="summary-price">
+													<span class="prefix">+$</span><span
+														class="price-number">1</span><span class="price-unit">/mo</span>
+												</div>
+											</li>
+											<li class="summary-addons-item">
+												<p class="text">Larger storage</p>
+												<div class="summary-price">
+													<span class="prefix">+$</span><span
+														class="price-number">2</span><span class="price-unit">/mo</span>
+												</div>
+											</li>
+											<li class="summary-addons-item">
+												<p class="text">Customizable profile</p>
+												<div class="summary-price">
+													<span class="prefix">+$</span><span
+														class="price-number">2</span><span class="price-unit">/mo</span>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="total-summary">
+									<p class="text">
+										Total (per <span class="per">month</span>)
+									</p>
+									<div class="summary-price">
+										<span class="prefix">+$</span><span
+											class="price-number total-price">12</span><span
+											class="price-unit">/mo</span>
+									</div>
+								</div>
+								<!-- Name e.g. Stephen King Email Address e.g.
+									stephenking@lorem.com Phone Number e.g. +1 234 567 890 -->
+								<!-- Dynamically add subscription and add-on selections here -->
+							</div>
+						</div>
+						<div class="step-footer">
+							<button class="btn btn-back" onclick="backStep(event,this)">
+								Go Back
+							</button>
+							<button class="btn btn-confirm" onclick="confirm_submit(event,this)">
+								Confirm
+							</button>
+						</div>
+					</div>
+					<div class="steps step-5 step-final">
+						<img src="assets/images/icon-thank-you.svg" alt="icon-thank-you." />
+
+						<h1 class="step-title">Thank you!</h1>
+
+						<div class="step-body">
+							<p class="step-text">
+								Thanks for confirming your subscription! We hope you have fun
+								using our platform. If you ever need support, please feel free
+								to email us at support@loremgaming.com.
+							</p>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</section>
+	</main>
+
+	<div class="attribution">
+		Challenge by
+		<a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a
+			href="https://github.com/escannord">Arnold NGUECHOUNG</a>.
+	</div>
+	<script src="assets/js/main.js" type="text/javascript"></script>
+</body>
+
+</html>

@@ -1,0 +1,670 @@
+@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+
+@font-face {
+    font-family: Ubuntu;
+    src: url("../fonts/Ubuntu-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    /* font-display: fallback; */
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url("../fonts/Ubuntu-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    /* font-display: fallback; */
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url("../fonts/Ubuntu-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    /* font-display: fallback; */
+}
+
+.attribution {
+    position: fixed;
+    bottom: 20px;
+    background-color: hsl(0, 0%, 100%);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 15px;
+    text-align: center;
+    font-family: "Zeyada", cursive;
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    transition: all 0.3s;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    font-family: Ubuntu, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: hsl(231, 11%, 63%);
+}
+
+button {
+    border: none;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background-color: hsl(217, 100%, 97%);
+
+    section {
+        display: flex;
+        max-width: 1000px;
+        min-width: 900px;
+        min-height: 600px;
+        background-color: hsl(0, 0%, 100%);
+        padding: 1rem;
+        border-radius: 20px;
+        box-shadow: 5px 0px 20px 0 hsla(215, 21%, 77%, 0.233);
+
+        aside {
+            border-radius: 10px;
+            min-width: 260px;
+            color: hsl(231, 100%, 99%);
+            padding: 40px;
+            background: url("../images/bg-sidebar-desktop.svg") no-repeat center;
+
+            ul.nav-list {
+                li.nav-item {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 2rem;
+
+                    .level-item-number {
+                        width: 30px;
+                        height: 30px;
+                        text-align: center;
+                        line-height: 28px;
+                        border-radius: 50%;
+                        border: solid 1px hsl(0, 0%, 100%);
+                    }
+
+                    &.active .level-item-number {
+                        background-color: hsl(206, 94%, 87%);
+                        color: hsl(213, 96%, 18%);
+                        border-color: hsl(206, 94%, 87%);
+                    }
+
+                    .text-label-item {
+                        margin-left: 1rem;
+                        text-transform: uppercase;
+
+                        .step-item {
+                            font-weight: 100;
+                            color: hsl(229, 24%, 87%);
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .form-container {
+            width: 100%;
+            padding: 2rem 3rem 1rem 3rem;
+            margin: 0 2rem;
+            position: relative;
+
+            form {
+                width: 100%;
+                height: 100%;
+
+                .steps {
+                    display: none;
+                    position: absolute;
+                    height: 100%;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    &.active {
+                        display: flex;
+                        position: initial;
+                    }
+
+                    .step-header {
+                        margin-bottom: 1rem;
+
+                        .step-title {
+                            color: hsl(213, 96%, 18%);
+                            font-size: xx-large;
+                        }
+                    }
+
+                    .step-body {
+                        flex-grow: 1;
+
+                        .step-content {
+                            margin-top: 2.5rem;
+                        }
+                    }
+
+                    .step-footer {
+                        &::after {
+                            content: "";
+                            display: block;
+                            clear: both;
+                        }
+
+                        overflow: auto;
+
+                        .btn {
+                            float: left;
+                            min-width: 7rem;
+                            min-height: 3rem;
+                            padding: 0.3rem;
+                            background-color: transparent;
+                            border-radius: 5px;
+                            font-weight: 600;
+                            font-size: 15px;
+                            color: hsl(231, 11%, 63%);
+                            cursor: pointer;
+
+                            &:hover {
+                                opacity: 0.8;
+                            }
+
+                            &.btn-next,
+                            &.btn-confirm {
+                                float: right;
+                                background-color: hsl(213, 96%, 18%);
+                                color: hsl(231, 100%, 99%);
+                            }
+
+                            &.btn-confirm {
+                                background-color: hsl(243, 100%, 62%);
+                            }
+
+                            &.btn-back {
+                                &:hover {
+                                    color: hsl(213, 96%, 18%);
+                                }
+                            }
+                        }
+                    }
+
+                    &.step-1 {
+                        .step-body {
+                            .step-content {
+                                .input-group {
+                                    width: 100%;
+                                    margin: 1rem 0;
+
+                                    .group-label-text {
+                                        margin-bottom: 0.5rem;
+
+                                        .label-text {
+                                            color: hsl(213, 96%, 18%);
+                                        }
+
+                                        .error-message {
+                                            float: right;
+                                            color: hsl(354, 84%, 57%);
+                                            display: none;
+
+                                            &.show-error {
+                                                display: inline;
+                                            }
+                                        }
+                                    }
+
+                                    .input-control {
+                                        display: block;
+                                        width: 100%;
+                                        height: 3rem;
+                                        outline: none;
+                                        border: solid 1px hsl(229, 24%, 87%);
+                                        border-radius: 10px;
+                                        font-weight: 700;
+                                        padding: 5px 1rem;
+                                        line-height: 36px;
+                                        font-size: 16px;
+                                        color: hsl(213, 96%, 18%);
+
+                                        &.invalid:invalid {
+                                            border-color: hsl(354, 84%, 57%);
+                                        }
+
+                                        &:focus {
+                                            border-color: hsl(243, 100%, 62%);
+                                        }
+
+                                        &::placeholder {
+                                            color: hsl(231, 11%, 63%);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.step-2 {
+                        .step-body {
+                            .step-content {
+                                .error-message {
+                                    color: hsl(354, 84%, 57%);
+                                    display: none;
+                                    margin-bottom: 10px;
+
+                                    &.show-error {
+                                        display: inline-block;
+                                    }
+                                }
+
+                                .group-plans {
+                                    display: flex;
+                                    justify-content: space-between;
+
+                                    input.input-plan {
+                                        display: none;
+
+                                        &:checked+label.label-plan {
+                                            background-color: hsl(231, 100%, 99%);
+                                            border-color: hsl(228, 45%, 44%);
+                                        }
+                                    }
+
+                                    label.label-plan {
+                                        display: inline-block;
+                                        border: solid 1px hsl(229, 24%, 87%);
+                                        border-radius: 10px;
+                                        padding: 15px;
+                                        width: calc(100% / 3 - 15px);
+                                        min-height: 170px;
+                                        display: inline-flex;
+                                        flex-direction: column;
+                                        justify-content: space-between;
+
+                                        &:hover {
+                                            border-color: hsl(228, 45%, 44%);
+                                        }
+
+                                        .content-plan {
+                                            * {
+                                                margin: 5px 0;
+                                            }
+
+                                            .title-plan {
+                                                color: hsl(213, 96%, 18%);
+                                            }
+
+                                            .free-months {
+                                                color: hsl(213, 96%, 18%);
+                                                font-weight: 200;
+                                                font-size: 13px;
+
+                                                &.hidden {
+                                                    display: none;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .frequency {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    background-color: hsl(231, 100%, 99%);
+                                    border-radius: 10px;
+                                    padding: 15px;
+                                    margin-top: 1.5rem;
+
+                                    input.input-frequency {
+                                        display: none;
+
+                                        &~* {
+                                            margin: 0 5px;
+                                        }
+
+                                        &~.toggle-frequency {
+                                            display: inline-block;
+                                            width: 2.5rem;
+                                            height: 1.3rem;
+                                            padding: 0.1rem 0.3rem;
+                                            border-radius: 15px;
+                                            text-align: left;
+                                            background-color: hsl(213, 96%, 18%);
+                                            cursor: pointer;
+
+                                            &::after {
+                                                content: "";
+                                                display: inline-block;
+                                                width: 0.7rem;
+                                                height: 0.7rem;
+                                                background-color: aliceblue;
+                                                border-radius: 50%;
+                                            }
+                                        }
+
+                                        &~.freq-monthly {
+                                            color: hsl(213, 96%, 18%);
+                                        }
+
+                                        &:checked {
+                                            &~.toggle-frequency {
+                                                text-align: right;
+                                            }
+
+                                            &~.freq-yearly {
+                                                color: hsl(213, 96%, 18%);
+                                            }
+
+                                            &~.freq-monthly {
+                                                color: hsl(231, 11%, 63%);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.step-3 {
+                        .step-body {
+                            .step-content {
+                                .input-group {
+                                    display: flex;
+
+                                    input.input-addons {
+                                        display: none;
+
+                                        &:checked+.label-addons {
+                                            border-color: hsl(243, 100%, 62%);
+                                            background-color: hsl(217, 100%, 97%);
+
+                                            .check-container {
+                                                .checker {
+                                                    background-color: hsl(243, 100%, 62%);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .label-addons {
+                                        border: solid 1px hsl(229, 24%, 87%);
+                                        padding: 10px 15px 10px 5px;
+                                        width: 100%;
+                                        height: 80px;
+                                        border-radius: 10px;
+                                        margin: 7px 0;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+
+                                        &:hover {
+                                            border-color: hsl(243, 100%, 62%);
+                                        }
+
+                                        .check-container {
+                                            width: 3rem;
+                                            display: grid;
+                                            place-items: center;
+
+                                            .checker {
+                                                border: 1px solid hsl(229, 24%, 87%);
+                                                width: 20px;
+                                                height: 20px;
+                                                border-radius: 5px;
+
+                                                &::after {
+                                                    content: "";
+                                                    display: inline-block;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    background: url("../images/icon-checkmark.svg") no-repeat center;
+                                                }
+                                            }
+                                        }
+
+                                        .addons-container {
+                                            flex-grow: 1;
+
+                                            .addons-title {
+                                                color: hsl(213, 96%, 18%);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.step-4 {
+                        .step-body {
+                            .step-content {
+                                .card-summary {
+                                    padding: 1rem 1.5rem;
+                                    border-radius: 10px;
+                                    background-color: hsl(231, 100%, 99%);
+
+                                    .summary-plan {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        padding-bottom: 1rem;
+                                        border-bottom: solid 1px hsl(229, 24%, 87%);
+
+                                        .summary-plan-text {
+                                            .summary-title {
+                                                color: hsl(213, 96%, 18%);
+
+                                                .plan-choice {
+                                                    text-transform: capitalize;
+                                                }
+                                            }
+
+                                            p {
+                                                text-decoration: underline;
+                                                cursor: pointer;
+                                                display: inline-block;
+
+                                                &:hover {
+                                                    color: hsl(243, 100%, 62%);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .summary-addons {
+                                        ul {
+                                            margin-top: 0.5rem;
+
+                                            .summary-addons-item {
+                                                display: flex;
+                                                justify-content: space-between;
+                                                padding: 0.5rem 0;
+
+                                                .summary-price {
+                                                    font-weight: 400;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .summary-price {
+                                    color: hsl(213, 96%, 18%);
+                                    font-weight: 600;
+                                }
+
+                                .total-summary {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    padding: 2rem;
+
+                                    .summary-price {
+                                        font-weight: 700;
+                                        color: hsl(243, 100%, 62%);
+                                        font-size: 20px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.step-5 {
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        .step-title {
+                            color: hsl(213, 96%, 18%);
+                            margin: 2rem 0 1rem 0;
+                            font-weight: 700;
+                            font-size: 30px;
+                        }
+
+                        .step-body {
+                            flex-grow: 0;
+                            width: 90%;
+                            text-align: center;
+                            line-height: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 950px) {
+    main {
+        section {
+            min-width: 700px;
+            margin: 2rem;
+
+            aside {
+                min-width: 240px;
+            }
+
+            .form-container {
+                padding: 1rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    main {
+        section {
+            min-width: 90%;
+            min-height: auto;
+            margin: 2rem;
+            z-index: 2;
+            padding: 0;
+
+            position: relative;
+
+            aside {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 150px;
+
+                border-radius: 0;
+                background: url("../images/bg-sidebar-mobile.svg") repeat center;
+
+                ul.nav-list {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    li.nav-item {
+                        display: flex;
+                        align-items: center;
+                        margin: 1rem;
+
+                        .level-item-number {
+                            width: 30px;
+                            height: 30px;
+                            text-align: center;
+                            line-height: 28px;
+                            border-radius: 50%;
+                            border: solid 1px hsl(0, 0%, 100%);
+                        }
+
+                        &.active .level-item-number {
+                            background-color: hsl(206, 94%, 87%);
+                            color: hsl(213, 96%, 18%);
+                            border-color: hsl(206, 94%, 87%);
+                        }
+
+                        .text-label-item {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .form-container {
+                padding: 0;
+                margin: 0;
+
+                form {
+                    .steps {
+                        background-color: hsl(0, 0%, 100%);
+                        padding: 1rem 1rem 2rem 1rem;
+                        border-radius: 10px;
+
+                        .step-footer {
+                            position: fixed;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            height: 80px;
+                            padding: 1rem;
+                            background-color: hsl(0, 0%, 100%);
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            box-shadow: -10px 0 30px rgba(165, 165, 165, 0.315);
+
+                            &::after {
+                                display: none;
+                            }
+                        }
+
+                        &.step-1 {
+                            .step-footer {
+                                justify-content: end;
+                            }
+                        }
+
+                        &.step-2 {
+                            .step-body .step-content .group-plans label.label-plan {
+                                width: calc(100% / 3 - 6px);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
